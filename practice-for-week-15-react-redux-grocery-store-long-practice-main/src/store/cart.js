@@ -1,10 +1,17 @@
-const ADD_ITEM = "ADD_ITEM"
+const ADD_ITEM = "ADD_ITEM";
+const REMOVE_ITEM = "REMOVE_ITEM";
 
 export const populateCart = (itemId) => {
     return {
         type: ADD_ITEM,
         itemId
-        // produce: produceData
+    }
+}
+
+export const removeItem = (itemId) => {
+    return {
+        type: REMOVE_ITEM,
+        itemId
     }
 }
 
@@ -13,7 +20,10 @@ export default function cartReducer(state={}, action) {
     switch (action.type) {
         case ADD_ITEM:
             nextState[action.itemId] = { id: action.itemId, count: 1 }
-            return nextState
+            return nextState;
+        case REMOVE_ITEM:
+            delete nextState[action.itemId];
+            return nextState;
         default:
             return state
     }
