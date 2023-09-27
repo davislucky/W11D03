@@ -6,18 +6,11 @@ import { useState } from "react";
 function ProduceDetails({ produce }) {
   const cartItem = {};
 
-  const dispatch = useDispatch()
-  const [id, setId] = useState('')
-  const [count, setCount] = useState('')
-
-  // cartItem = {
-  //   id: produce.id,
-  //   count: count
-  // }
+  const dispatch = useDispatch();
 
   const handleClick = (e) => {
-    e.preventDefault()
-    dispatch(populateCart(produce.id))
+    e.preventDefault();
+    dispatch(populateCart(produce.id));
   }
 
   return (
