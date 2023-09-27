@@ -17,7 +17,7 @@ function ProduceDetails({ produce }) {
 
   const handleClick = (e) => {
     e.preventDefault()
-    dispatch(populateCart(cartItem))
+    dispatch(populateCart(produce.id))
   }
 
   return (
