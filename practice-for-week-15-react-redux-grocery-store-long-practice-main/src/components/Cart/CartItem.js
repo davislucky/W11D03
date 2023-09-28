@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import cartReducer, { removeItem } from '../../store/cart';
+import cartReducer, { addCount, removeItem, minusCount } from '../../store/cart';
 import { useDispatch } from 'react-redux';
 
 function CartItem({ item }) {
@@ -14,6 +14,15 @@ function CartItem({ item }) {
     e.preventDefault();
     dispatch(removeItem(item.id))
   }
+  const handleAdd = (e) => {
+    e.preventDefault();
+    dispatch(addCount(item.id))
+  }
+  const handleMinus = (e) => {
+    e.preventDefault();
+    dispatch(minusCount(item.id))
+  }
+  
 
   return (
     <li className="cart-item">
@@ -25,11 +34,13 @@ function CartItem({ item }) {
         />
         <button
           className="cart-item-button"
+          onClick={handleAdd}
         >
           +
         </button>
         <button
           className="cart-item-button"
+          onClick={handleMinus}
         >
           -
         </button>

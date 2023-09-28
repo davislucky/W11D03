@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { populateCart } from "../../store/cart";
 import { useState } from "react";
+import { toggleLike } from '../../store/produce';
 
 
 function ProduceDetails({ produce }) {
@@ -13,12 +14,18 @@ function ProduceDetails({ produce }) {
     dispatch(populateCart(produce.id));
   }
 
+  const handleLikeClick = (e) => {
+    e.preventDefault();
+    dispatch(toggleLike(produce.id))
+  }
+
   return (
     <li className="produce-details">
       <span>{produce.name}</span>
       <span>
         <button
           className={"like-button" + (produce.liked ? " selected" : "")}
+          onClick={handleLikeClick}
         >
           <i className={"fas fa-heart"} />
         </button>
